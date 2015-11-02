@@ -39,7 +39,6 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 static void draw_circle_layer_update_proc(Layer *this_layer, GContext *ctx) {
-  GRect bounds = layer_get_bounds(this_layer);
   GPoint center = GPoint(72, 88);
   graphics_context_set_fill_color(ctx, GColorWhite);
   graphics_fill_circle(ctx, center, 64);
@@ -92,8 +91,8 @@ static void main_window_unload(Window *window) {
 
 static void init() {
   s_main_window = window_create();
-  window_set_background_color(s_main_window, (GColor8){ .argb = 0b11111000 });
-  //window_set_background_color(s_main_window, GColorFromRGB(245,240,237));
+  window_set_background_color(s_main_window, GColorFromHEX(0xFFFF00));
+
   window_set_window_handlers(s_main_window, (WindowHandlers) {
     .load = main_window_load,
     .unload = main_window_unload,
